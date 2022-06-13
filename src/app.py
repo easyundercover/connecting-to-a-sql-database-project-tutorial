@@ -31,14 +31,16 @@ def connect():
 connect()
 
 # 2) Execute the SQL sentences to create your tables using the SQLAlchemy's execute function
-engine.execute("""
-CREATE TABLE publishers(
-publisher_id INT NOT NULL,
-name VARCHAR(255) NOT NULL,
-PRIMARY KEY(publisher_id)
-);
-""")
+#engine.execute("""
+#CREATE TABLE publishers(
+#publisher_id INT NOT NULL,
+#name VARCHAR(255) NOT NULL,
+#PRIMARY KEY(publisher_id)
+#);
+#""")
 
 # 3) Execute the SQL sentences to insert your data using the SQLAlchemy's execute function
 engine.execute("INSERT INTO publishers(publisher_id, name) values (1,'O Reilly Media');")
+
 # 4) Use pandas to print one of the tables as dataframes using read_sql function
+df = pd.read_sql("Select * from publishers;", engine)
